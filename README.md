@@ -1,92 +1,150 @@
-# Como calcular sua nota do ENEM
+# Calculadora ENEM
 
-## Introdução
+## Sumário
 
-Este projeto tem como objetivo calcular, utilizando Python, a nota de um aluno em uma edição do ENEM a partir dos microdados divulgados pelo INEP.
+* [Sobre o projeto](#sobre-o-projeto)
+* [Resultados](#resultados)
+* [Estrutura do repositório](#estrutura-do-repositório)
+* [Instalação](#instalação)
+* [Uso rápido](#uso-rápido)
+* [Exemplo de uso](#exemplo-de-uso)
+* [Como funciona o cálculo](#como-funciona-o-cálculo)
 
-O cálculo segue os métodos descritos nos documentos oficiais:
+  * [TRI e modelo 3PL](#1-tri--modelo-3pl)
+  * [Estimativa da proficiência (θ)](#2-estimativa-da-proficiência-θ)
+  * [Conversão para a escala do ENEM](#3-conversão-para-a-escala-do-enem)
+* [Casos atípicos e inconsistências nos microdados](#casos-atípicos-e-inconsistências-nos-microdados)
 
-* [*Entenda sua nota do ENEM*](https://download.inep.gov.br/publicacoes/institucionais/avaliacoes_e_exames_da_educacao_basica/entenda_a_sua_nota_no_enem_guia_do_participante.pdf)
-* [*ENEM: procedimentos de análise*](https://download.inep.gov.br/publicacoes/institucionais/avaliacoes_e_exames_da_educacao_basica/enem_procedimentos_de_analise.pdf)
-
-Algumas simplificações foram aplicadas e estão detalhadas na seção [Como funciona o cálculo](#como-funciona-o-cálculo).
-
-Nos testes realizados, o erro médio foi de aproximadamente **0,04 pontos**, indicando alta fidelidade na reprodução do cálculo oficial. Pequenas diferenças podem ser atribuídas a aproximações numéricas e simplificações do modelo.
-
-Os dados tratados dos participantes estão disponibilizados em: [10.5281/zenodo.20130840](https://doi.org/10.5281/zenodo.20130840)
-
-E são adaptados dos microdados oficiais disponíveis em: https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/microdados/enem
-
----
-
-## Utilização
-
-### Cálculo da nota individual
-
-### 1. Baixar o código
-
-Baixe o arquivo [calculadora.py](calculadora.py)
+  * [Provas com inconsistências estruturais](#provas-com-inconsistências-estruturais)
+  * [Participantes atípicos](#participantes-atípicos)
+* [Dados utilizados](#dados-utilizados)
+* [Códigos extras](#códigos-extras)
+* [Limitações](#limitações)
+* [Reprodutibilidade](#reprodutibilidade)
+* [Referências](#referências)
+* [Contribuição](#contribuição)
 
 ---
 
-### 2. Instalar as dependências
+# Sobre o projeto
+
+Este projeto implementa uma abordagem reproduzível para estimar notas do ENEM utilizando Python e os microdados públicos disponibilizados pelo INEP.
+
+A metodologia utiliza:
+
+* Teoria de Resposta ao Item (TRI);
+* modelo logístico de 3 parâmetros (3PL);
+* estimação de proficiência via EAP (*Expected a Posteriori*).
+
+A implementação foi construída a partir dos procedimentos metodológicos divulgados pelo INEP e consegue reproduzir as notas oficiais com alta fidelidade utilizando apenas:
+
+* parâmetros psicométricos dos itens;
+* vetor de respostas do participante.
+
+---
+
+# Resultados
+
+Nos experimentos realizados entre 2009 e 2024:
+
+* erro médio absoluto (MAE): ~0,03 pontos;
+* mediana do erro: ~0,025 pontos;
+* viés próximo de zero;
+* alta estabilidade entre anos e áreas.
+
+Isso indica que a metodologia consegue reproduzir o comportamento do sistema oficial com excelente aproximação para fins educacionais e analíticos.
+
+---
+
+# Estrutura do repositório
+
+```text
+.
+├── calculadora.py
+├── dados/
+├── imagens/
+├── codigos_extras/
+├── README.md
+```
+
+## Pastas
+
+### `dados/`
+
+Contém:
+
+* parâmetros dos itens;
+* códigos de prova;
+* métricas de desempenho;
+* arquivos auxiliares para reprodução dos experimentos.
+
+### `imagens/`
+
+Gráficos e figuras utilizados na documentação.
+
+### `codigos_extras/`
+
+Scripts auxiliares utilizados nos experimentos e análises.
+
+---
+
+# Instalação
+
+## 1. Clonar o repositório
 
 ```bash
-pip install pandas numpy
+git clone https://github.com/pedro-mantovani/calculadora_ENEM
+```
+
+## 2. Instalar dependências
+
+```bash
+pip install pandas numpy matplotlib
 ```
 
 ---
 
-### 3. Baixar os dados dos itens
+# Uso rápido
 
-Para facilitar o uso, todas as planilhas referentes aos itens foram organizadas na pasta [dados](dados).
-
-Você pode:
-
-* Baixar o arquivo correspondente à prova desejada e colocá-lo na mesma pasta do projeto
-  **ou**
-* Obter os dados diretamente nos microdados do ENEM disponíveis no site do INEP
-
----
-
-### 4. Executar o código
-
-Execute o programa com:
+## Executar a calculadora
 
 ```bash
 python3 calculadora.py
 ```
 
+Note que para o uso exclusivo de cálculo de nota basta o código calculadora.py e a planilha com os itens das provas na mesma pasta.
+
 O programa solicitará:
 
-* Ano da prova
-* Código da prova (disponível no dicionário dos microdados ou condensados na planilha [codigos_provas](dados/codigos_provas.ods), disponível na pasta [dados](dados))
-* Suas respostas
+* ano da prova;
+* código da prova;
+* respostas do participante.
 
-Com essas informações, o sistema calculará:
+O sistema retornará:
 
-* Número de acertos
-* Proficiência estimada (θ)
-* Nota final
+* número de acertos;
+* proficiência estimada (θ);
+* nota final estimada.
 
 ---
 
-## Exemplo de uso
+# Exemplo de uso
 
-**Entrada:**
+## Entrada
 
-```
-Ano: 2024  
-Código da prova: 1420  
-Respostas: 
-1. A 
-2. B...
+```text
+Ano: 2024
+Código da prova: 1420
+
+1. A
+2. B
+...
 45. A
 ```
 
-**Saída:**
+## Saída
 
-```
+```text
 Acertos: 35
 Theta: 1.1929388941456571
 Nota: 654.68
@@ -94,193 +152,68 @@ Nota: 654.68
 
 ---
 
-### Códigos extras
+# Como funciona o cálculo
 
-A pasta [codigos_extras](/codigos_extras/) compila diversos códigos úteis para replicabilidade do projeto e entendimento do cálculo da nota do ENEM.
+# 1. TRI — modelo 3PL
 
-- cci.py: permite criar gráficos que representam a curva característica de um item, basta alterar valores dos parâmetros a, b, c e compilar.
+Cada questão é representada por três parâmetros:
 
-- EAPxMLE: cria o gráfico máxima verossimilhança de um aluno e compara os valores de theta com o método EAP e MLE.
+* **a** → discriminação;
+* **b** → dificuldade;
+* **c** → acerto ao acaso.
 
-- controler.py: arquivo principal do conjunto que é capaz de calcular a nota de um conjunto de provas e mostrar as métricas de desempenho do método nelas. Também é possível usa-lo para plotar os resultados 
-
-- extracao.py: permite a extração de vários participantes de um conjunto de dados.
-
-- proficiencia.py: permite a estimação da proficiência de um ou vários participantes.
-
-- regressao.py: permite estimar os valores dos transformadores lineares (A, B) dado um conjunto de thetas e notas finais. Também possui funções para avaliar a precisão do método em um conjunto de dados.
-
-## Como funciona o cálculo
-
-O cálculo da nota do ENEM é baseado na **Teoria de Resposta ao Item (TRI)**, que considera não apenas o número de acertos, mas também a coerência das respostas.
-
-A seguir está uma explicação da metodologia utilizada.
-
----
-
-### 1. Modelagem das questões (TRI – modelo 3PL)
-
-Cada questão é modelada por três parâmetros:
-
-* **a (discriminação):** capacidade de diferenciar alunos com diferentes níveis de habilidade
-* **b (dificuldade):** nível de proficiência necessário para acertar a questão
-* **c (acerto ao acaso):** probabilidade de acerto por chute
-
-Esses parâmetros definem a **Curva Característica do Item (CCI)**:
+A probabilidade de acerto é dada por:
 
 $$
-P(\theta) = c + \frac{1 - c}{1 + e^{-a(\theta - b)}}
+P(\theta) =
+c + \frac{1-c}{1 + e^{-a(\theta-b)}}
 $$
 
-![CCI_2024_139](imagens/CCI_padrao.png)
+## Interpretação intuitiva
 
-**Interpretação:**
-
-* Quanto maior o θ, maior a probabilidade de acerto
-* Questões mais difíceis (b alto) deslocam a curva para a direita
-![CCI_B_alto](imagens/CCI_B.png)
-* Alta discriminação (a alto) torna a curva mais inclinada
-![CCI_A_alto](imagens/CCI_A.png)
-* Maior acerto ao acaso (c alto) eleva a base da curva
-![CCI_C_alto](imagens/CCI_C.png)
+* θ maior → maior chance de acerto;
+* b alto → questão mais difícil;
+* a alto → questão diferencia melhor os participantes;
+* c alto → maior chance de acerto por chute.
 
 ---
 
-### 2. Cálculo da proficiência (θ)
+# 2. Estimativa da proficiência (θ)
 
-O objetivo é estimar a proficiência do aluno (θ), que representa sua habilidade.
+A proficiência é estimada utilizando o método EAP (*Expected a Posteriori*).
+
+A implementação:
+
+* assume priori normal padrão;
+* calcula a distribuição posterior;
+* aproxima numericamente as integrais;
+* utiliza domínio logarítmico para estabilidade numérica.
+
+## Aproximação numérica
+
+O projeto utiliza:
+
+* intervalo: [-4, 4];
+* 400 pontos igualmente espaçados;
+* método dos trapézios.
+
+O INEP utiliza quadratura gaussiana, que é mais precisa, porém menos didática e mais complexa de reproduzir.
 
 ---
 
-#### 2.1 Função de verossimilhança (MLE)
+# 3. Conversão para a escala do ENEM
 
-Dado um conjunto de respostas, calcula-se a probabilidade de um aluno com determinada proficiência produzir aquele padrão.
-
-Isso é feito multiplicando:
-
-* Probabilidades de acerto nas questões corretas
-* Probabilidades de erro nas questões incorretas
-
-O valor de θ que maximiza essa função é chamado de **MLE (Maximum Likelihood Estimation)**.
-
-**Limitação:**
-Se o aluno acerta todas as questões, a estimativa tende ao infinito.
-
----
-
-#### 2.2 Método EAP (Expected a Posteriori)
-
-Para evitar esse problema, utiliza-se o método EAP.
-
-Nesse método:
-
-* Assume-se que θ segue uma distribuição normal padrão (média 0, desvio 1)
-* Essa distribuição atua como uma **priori**, penalizando valores extremos
-
-A função utilizada é:
+Após a estimação de θ:
 
 $$
-\pi(\theta) = \frac{e^{-\theta^2/2}}{\sqrt{2\pi}}
+\text{Nota} = \mu + \sigma \theta
 $$
 
-A estimativa final é baseada na **distribuição a posteriori**, que combina:
+Os parâmetros foram estimados empiricamente via regressão linear utilizando milhares de participantes reais.
 
-* Evidência dos dados (respostas)
-* Conhecimento prévio (distribuição normal)
+## Valores médios estimados
 
-Simplificando, é como se essa função amarrasse uma corda e não deixasse a proficiência do aluno ser muito alta, visto que isso é pouco provável. Assim, quanto mais longe do esperado mais esses valores são penalizados e quanto mais perto do esperado mais próximos são os resultados de ambos os métodos.
-
-O último passo é encontrar o centro de massa desta nova função. Usar o centro de massa ao invés do valor máximo permite levar em consideração para onde o gráfico tende além de simplesmente ver o ponto máximo da função. Repare na diferença prática dos dois métodos:
-
-![EAPxMLE](imagens/EAPxMLE.png)
-
----
-
-#### 2.3 Aproximação numérica
-
-O centro de massa é calculado por:
-
-$$
-CM = \frac{\int x f(x),dx}{\int f(x),dx}
-$$
-
-Como não há solução analítica simples, utiliza-se aproximação numérica:
-
-* Intervalo considerado: [-4, 4]
-* Divisão em 400 pontos
-* Cálculo da função em cada ponto
-* Aproximação da integral via método dos trapézios
-* Cada par de pontos forma um trapézio de base $f(x_{i})$ e $f(x_{i+1})$
-* Somando as áreas de todos os trapézios temos aproximadamente a área do gráfico
-
-Essa abordagem oferece um bom equilíbrio entre precisão e desempenho.
-
-**Observação:**
-O INEP utiliza quadratura gaussiana, que é mais precisa, porém menos didática.
-
----
-
-#### 2.4 Otimização com logaritmos
-
-Para evitar problemas numéricos (como underflow), os cálculos são feitos em escala logarítmica:
-
-* Produtos → somas
-* Maior estabilidade computacional
-
----
-
-### 3. Conversão da proficiência para nota
-
-A proficiência θ não corresponde diretamente à nota final.
-
-A conversão é feita por uma transformação linear:
-
-$$
-\text{Nota} = A + B \cdot \theta
-$$
-
-No qual:
-
-* **A** ≈ 500 (média)
-* **B** ≈ 100 (escala)
-
----
-
-#### Estimativa dos parâmetros
-
-Como A e B não são divulgados oficialmente, eles foram estimados via regressão linear usando dados reais.
-
-Foram utilizados dados de:
-
-* 2024
-* 2023
-* 2022
-* 2010
-* 2009
-
-Para cada código de prova:
-
-* Foram coletados pelo menos 800 participantes
-* As proficiências foram estimadas
-* A regressão linear foi aplicada
-
-Métricas avaliadas:
-
-* MAE (erro médio absoluto)
-* RMSE
-* Erro máximo
-* Viés
-* Correlação
-
-Resultados disponíveis em [provas.csv](dados/provas.csv), na pasta [dados](dados).
-
-As transformações variam entre áreas do conhecimento, mas são aproximadamente constantes a cada ano, sendo:
-
----
-
-#### Valores médios estimados
-
-| Área                 | A       | B       |
+| Área                 | $\mu$   | $\sigma$|
 | -------------------- | ------- | ------- |
 | Linguagens           | 499.977 | 108.091 |
 | Ciências Humanas     | 501.487 | 112.315 |
@@ -289,36 +222,154 @@ As transformações variam entre áreas do conhecimento, mas são aproximadament
 
 ---
 
-#### Qualidade da estimativa
+# Casos atípicos e inconsistências nos microdados
 
-O erro médio obtido foi de **0,04 pontos**, o que representa uma excelente aproximação para fins práticos, permitindo comparações confiáveis com participantes reais.
+Durante os experimentos foram identificadas inconsistências estruturais em subconjuntos específicos dos microdados do ENEM.
 
----
-
-## Explore por conta própria
-
-Os microdados do ENEM são públicos.
-
-Todos os códigos utilizados para:
-
-* Geração de gráficos
-* Estimativas em massa
-* Comparações de modelos
-
-estão disponíveis na pasta [codigos_extras](codigos_extras/)
-
-Sinta-se à vontade para explorar os dados, realizar suas próprias análises e compartilhar seus resultados.
+Esses casos produzem erros elevados mesmo quando a implementação está correta.
 
 ---
 
-## Contribuição
+## Provas com inconsistências estruturais
 
-Contribuições são bem-vindas!
+Em alguns conjuntos de provas, foi observada uma combinação de forte viés negativo e erro médio na casa das dezenas de pontos, contrastando com o erro médio inferior a 0,03 ponto verificado na maioria dos casos.
+
+A análise detalhada de um desses casos revelou uma despadronização no formato de exibição das respostas, comprometendo a correspondência entre o gabarito e as alternativas indicadas pelo participante.
+
+Um desses casos ocorreu nas provas de Linguagens entre 2015 e 2021. Diferentemente das demais provas, que exibiam apenas as 45 respostas efetivamente respondidas pelo participante, essas provas também apresentavam uma sequência de cinco noves (“99999”) representando a língua estrangeira não escolhida.
+
+Nesse cenário, o código funcionava corretamente, porém a correspondência entre as respostas corretas e as respostas do participante ficava comprometida, tornando os acertos praticamente aleatórios e acarretando a subestimação das notas.
+
+Após a remoção dos “99999” das respostas dos participantes, o erro retornou ao patamar esperado, em torno de 0,03 ponto. Dessa forma, outras provas com tendências semelhantes foram desconsideradas da análise final, por possivelmente conterem inconsistências nos itens ou participantes que não representam adequadamente o método.
+
+Das 571 provas analisadas, 56 foram desconsideradas. Seus resultados estão apresentados em [dados/provas_desconsideradas.csv](dados/provas_desconsideradas.csv).
+
+---
+
+## Participantes atípicos
+
+Também foram identificados participantes com erros elevados, em particular, destaca-se um caso na edição de 2010, no qual um único participante apresentou erro de 279,32 pontos na prova de Ciências Humanas e 171,19 pontos na prova de Ciências da Natureza, enquanto os demais candidatos exibiram erros compatíveis com o padrão observado.
+
+![outlier](imagens/outlier.png)
+
+Observando o padrão de respostas desse participante, há indicios de que o código da prova do participante estão incorretos e as respostas de Humanas e Natureza estão invertidas.
+
+Estimando a nota de Humanas usando as respostas de Natureza e o código de prova 86 (CH- Amarela) o erro cai de 279,32 para 0,03 pontos. Antálogamente, usando as respostas de Humanas com o código 90 (CN - Amarela) o erro cai de 171,19 pontos para 0,04.
+
+Ademais, os códigos originais (101 e 105) são referentes à prova azul de reaplicação, o que não faz sentido visto que sua prova de LC e MT são da primeira aplicação.
+
+Contudo, casos assim são isolados e difíceis de identificar, por isso, eles não foram tratados ou removidos dos dados.
+
+---
+
+# Dados utilizados
+
+Os dados utilizados receberam o seguinte tratamento:
+
+* Exclusão de participantes com nota zero
+
+* Exclusão de colunas desnecessárias (usadas apenas as colunas de nota, respostas, código da prova e língua)
+
+* Formato csv com separador e encoding padrão
+
+* Remoção da substring "99999" das respostas de LC de 2015 a 2021
+
+* Prova de 2009 não abre com a engine padrão do Pandas e não tem língua estrangeira, para resolver esse problema foi adicionado nos itens e na prova original a coluna TP_LINGUA, com valor padrão 0 (equivalente a uma prova de inglês), assim é possível estimar as notas de 2009 sem alterar o código.
+
+Todos os dados padronizados estão disponíveis na plataforma [Zenodo](https://doi.org/10.5281/zenodo.20130840)
+
+---
+
+# Códigos extras
+
+## `cci.py`
+
+Gera gráficos da Curva Característica do Item (CCI).
+
+---
+
+## `EAPxMLE.py`
+
+Compara estimativas EAP e MLE.
+
+---
+
+## `controler.py`
+
+Executa avaliações em massa e calcula métricas de desempenho.
+
+---
+
+## `extracao.py`
+
+Extrai participantes dos microdados.
+
+---
+
+## `proficiencia.py`
+
+Estima proficiências individuais ou em lote.
+
+---
+
+## `regressao.py`
+
+Estima os parâmetros lineares da escala do ENEM e métricas de avaliação.
+
+---
+
+# Limitações
+
+Este projeto não reproduz exatamente o sistema oficial do INEP.
+
+As principais diferenças incluem:
+
+* uso de aproximação numérica simplificada;
+* estimação empírica dos parâmetros de escala;
+* ausência dos softwares oficiais utilizados pelo INEP;
+* possíveis inconsistências presentes nos microdados públicos.
+
+Apesar disso, os resultados obtidos apresentam excelente aproximação prática.
+
+---
+
+# Reprodutibilidade
+
+O projeto disponibiliza:
+
+* código-fonte;
+* métricas;
+* dados tratados;
+* scripts de análise;
+* gráficos;
+* metodologia completa.
+
+O objetivo é facilitar:
+
+* auditoria;
+* replicação;
+* estudos sobre TRI;
+* desenvolvimento de simuladores educacionais.
+
+---
+
+# Referências
+
+* [*Entenda sua nota do ENEM*](https://download.inep.gov.br/publicacoes/institucionais/avaliacoes_e_exames_da_educacao_basica/entenda_a_sua_nota_no_enem_guia_do_participante.pdf) 
+
+* [*ENEM: procedimentos de análise*](https://download.inep.gov.br/publicacoes/institucionais/avaliacoes_e_exames_da_educacao_basica/enem_procedimentos_de_analise.pdf)
+
+* [INEP — Microdados ENEM](https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/microdados/enem)
+
+---
+
+# Contribuição
+
+Contribuições são bem-vindas.
 
 Você pode:
 
-* Abrir issues
-* Enviar pull requests
-* Sugerir melhorias
-
----
+* abrir issues;
+* sugerir melhorias;
+* enviar pull requests;
+* reportar inconsistências nos microdados.
