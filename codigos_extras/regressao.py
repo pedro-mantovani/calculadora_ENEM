@@ -30,7 +30,7 @@ def calcular_metricas(nota_real, nota_modelo):
     }
 
 # Função para gerar os gráficos de desempenho
-def plotar_resultados(nota_real, nota_modelo):
+def plotar_resultados(nota_real, nota_modelo, cod):
 
     plt.figure()
     plt.scatter(nota_real, nota_modelo, alpha=0.6)
@@ -43,7 +43,7 @@ def plotar_resultados(nota_real, nota_modelo):
     plt.ylabel("Nota Modelo")
     plt.title("Nota Oficial vs Estimada")
     plt.grid(True)
-    plt.savefig("real_modelo.png")
+    plt.savefig(f"real_modelo_{cod}.png")
 
     plt.figure(figsize=(6,5))
     plt.scatter(nota_real, nota_real-nota_modelo, alpha=0.6)
@@ -52,4 +52,4 @@ def plotar_resultados(nota_real, nota_modelo):
     plt.ylabel("Resíduo (Modelo - Oficial)")
     plt.title("Análise de Resíduos")
     plt.grid(True)
-    plt.savefig("residuos.png")
+    plt.savefig(f"residuos_{cod}.png")

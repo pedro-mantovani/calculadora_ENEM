@@ -13,6 +13,10 @@ Algumas simplificações foram aplicadas e estão detalhadas na seção [Como fu
 
 Nos testes realizados, o erro médio foi de aproximadamente **0,04 pontos**, indicando alta fidelidade na reprodução do cálculo oficial. Pequenas diferenças podem ser atribuídas a aproximações numéricas e simplificações do modelo.
 
+Os dados tratados dos participantes estão disponibilizados em: [10.5281/zenodo.20130840](https://doi.org/10.5281/zenodo.20130840)
+
+E são adaptados dos microdados oficiais disponíveis em: https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/microdados/enem
+
 ---
 
 ## Utilização
@@ -89,6 +93,22 @@ Nota: 654.68
 ```
 
 ---
+
+### Códigos extras
+
+A pasta [codigos_extras](/codigos_extras/) compila diversos códigos úteis para replicabilidade do projeto e entendimento do cálculo da nota do ENEM.
+
+- cci.py: permite criar gráficos que representam a curva característica de um item, basta alterar valores dos parâmetros a, b, c e compilar.
+
+- EAPxMLE: cria o gráfico máxima verossimilhança de um aluno e compara os valores de theta com o método EAP e MLE.
+
+- controler.py: arquivo principal do conjunto que é capaz de calcular a nota de um conjunto de provas e mostrar as métricas de desempenho do método nelas. Também é possível usa-lo para plotar os resultados 
+
+- extracao.py: permite a extração de vários participantes de um conjunto de dados.
+
+- proficiencia.py: permite a estimação da proficiência de um ou vários participantes.
+
+- regressao.py: permite estimar os valores dos transformadores lineares (A, B) dado um conjunto de thetas e notas finais. Também possui funções para avaliar a precisão do método em um conjunto de dados.
 
 ## Como funciona o cálculo
 

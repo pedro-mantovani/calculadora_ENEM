@@ -4,9 +4,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Parâmetros
-a = 1.5 #Discriminação
-b = 0 #Dificuldade
-c = 0.35 #Acerto ao acaso
+a = 2.96006 #Discriminação
+b = 2.23749 #Dificuldade
+c = 0.16489 #Acerto ao acaso
 
 # Intervalo de proficiência (theta)
 theta = np.linspace(-6, 6, 1000)

@@ -3,10 +3,10 @@ import numpy as np
 
 # Valores estimados da transformação linear aplicada por área
 transformacao = {
-    "LC": (499.977, 108.091),
+    "LC": (499.977, 108.09),
     "CH": (501.487, 112.315),
-    "CN": (501.141, 113.108),
-    "MT": (500.015, 129.654),
+    "CN": (501.142, 113.11),
+    "MT": (500.016, 129.654),
 }
 
 siglas = {

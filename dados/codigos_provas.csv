@@ -1,0 +1,687 @@
+ano,area,codigo,tipo
+2024,CN,1419,Azul
+2024,CN,1420,Amarela
+2024,CN,1421,Verde
+2024,CN,1422,Cinza
+2024,CN,1423,Verde - Ampliada
+2024,CN,1424,Verde - Superampliada
+2024,CN,1426,Laranja - Adaptada Ledor
+2024,CN,1427,Roxa - Videoprova - Libras
+2024,CN,1428,Roxa - Videoprova - Libras - Ampliada
+2024,CN,1373,Azul (Reaplicação)
+2024,CN,1374,Amarela (Reaplicação)
+2024,CN,1375,Cinza (Reaplicação)
+2024,CN,1376,Verde (Reaplicação)
+2024,CN,1377,Verde - Ampliada (Reaplicação)
+2024,CN,1378,Verde - Superampliada (Reaplicação)
+2024,CN,1380,Laranja - Adaptada Ledor (Reaplicação)
+2024,CH,1383,Azul
+2024,CH,1384,Amarela
+2024,CH,1385,Branca
+2024,CH,1386,Verde
+2024,CH,1387,Verde - Ampliada
+2024,CH,1388,Verde - Superampliada
+2024,CH,1390,Laranja - Adaptada Ledor
+2024,CH,1391,Roxa - Videoprova - Libras
+2024,CH,1392,Roxa - Videoprova - Libras - Ampliada
+2024,CH,1393,Roxa - Videoprova - Libras - Superampliada
+2024,CH,1343,Azul (Reaplicação)
+2024,CH,1344,Amarela (Reaplicação)
+2024,CH,1345,Branca (Reaplicação)
+2024,CH,1346,Verde (Reaplicação)
+2024,CH,1347,Verde - Ampliada (Reaplicação)
+2024,CH,1348,Verde - Superampliada (Reaplicação)
+2024,CH,1350,Laranja - Adaptada Ledor (Reaplicação)
+2024,LC,1395,Azul
+2024,LC,1396,Amarela
+2024,LC,1397,Verde
+2024,LC,1398,Branca
+2024,LC,1399,Verde - Ampliada
+2024,LC,1400,Verde - Superampliada
+2024,LC,1402,Laranja - Adaptada Ledor
+2024,LC,1403,Roxa - Videoprova - Libras
+2024,LC,1404,Roxa - Videoprova - Libras - Ampliada
+2024,LC,1405,Roxa - Videoprova - Libras - Superampliada
+2024,LC,1353,Azul (Reaplicação)
+2024,LC,1354,Amarela (Reaplicação)
+2024,LC,1355,Verde (Reaplicação)
+2024,LC,1356,Branca (Reaplicação)
+2024,LC,1357,Verde - Ampliada (Reaplicação)
+2024,LC,1358,Verde - Superampliada (Reaplicação)
+2024,LC,1360,Laranja - Adaptada Ledor (Reaplicação)
+2024,MT,1407,Azul
+2024,MT,1408,Amarela
+2024,MT,1409,Verde
+2024,MT,1410,Cinza
+2024,MT,1411,Verde - Ampliada
+2024,MT,1412,Verde - Superampliada
+2024,MT,1414,Laranja - Adaptada Ledor
+2024,MT,1415,Roxa - Videoprova - Libras
+2024,MT,1416,Roxa - Videoprova - Libras - Ampliada
+2024,MT,1363,Azul (Reaplicação)
+2024,MT,1364,Amarela (Reaplicação)
+2024,MT,1365,Verde (Reaplicação)
+2024,MT,1366,Cinza (Reaplicação)
+2024,MT,1367,Verde - Ampliada (Reaplicação)
+2024,MT,1368,Verde - Superampliada (Reaplicação)
+2024,MT,1370,Laranja - Adaptada Ledor (Reaplicação)
+2023,CN,1221,Azul
+2023,CN,1222,Amarela
+2023,CN,1223,Rosa
+2023,CN,1224,Cinza
+2023,CN,1225,Rosa - Ampliada
+2023,CN,1226,Rosa - Superampliada
+2023,CN,1227,Laranja - Braile
+2023,CN,1228,Laranja - Adaptada Ledor
+2023,CN,1229,Verde - Videoprova - Libras
+2023,CN,1301,Azul (Reaplicação)
+2023,CN,1302,Amarela (Reaplicação)
+2023,CN,1303,Cinza (Reaplicação)
+2023,CN,1304,Rosa (Reaplicação)
+2023,CH,1191,Azul
+2023,CH,1192,Amarela
+2023,CH,1193,Branca
+2023,CH,1194,Rosa
+2023,CH,1195,Rosa - Ampliada
+2023,CH,1196,Rosa - Superampliada
+2023,CH,1197,Laranja - Braile
+2023,CH,1198,Laranja - Adaptada Ledor
+2023,CH,1199,Verde - Videoprova - Libras
+2023,CH,1271,Azul (Reaplicação)
+2023,CH,1272,Amarela (Reaplicação)
+2023,CH,1273,Branca (Reaplicação)
+2023,CH,1274,Rosa (Reaplicação)
+2023,LC,1201,Azul
+2023,LC,1202,Amarela
+2023,LC,1203,Rosa
+2023,LC,1204,Branca
+2023,LC,1205,Rosa - Ampliada
+2023,LC,1206,Rosa - Superampliada
+2023,LC,1207,Laranja - Braile
+2023,LC,1208,Laranja - Adaptada Ledor
+2023,LC,1209,Verde - Videoprova - Libras
+2023,LC,1281,Azul (Reaplicação)
+2023,LC,1282,Amarela (Reaplicação)
+2023,LC,1283,Rosa (Reaplicação)
+2023,LC,1284,Branca (Reaplicação)
+2023,MT,1211,Azul
+2023,MT,1212,Amarela
+2023,MT,1213,Rosa
+2023,MT,1214,Cinza
+2023,MT,1215,Rosa - Ampliada
+2023,MT,1216,Rosa - Superampliada
+2023,MT,1217,Laranja - Braile
+2023,MT,1218,Laranja - Adaptada Ledor
+2023,MT,1219,Verde - Videoprova - Libras
+2023,MT,1291,Azul (Reaplicação)
+2023,MT,1292,Amarela (Reaplicação)
+2023,MT,1293,Rosa (Reaplicação)
+2023,MT,1294,Cinza (Reaplicação)
+2022,CN,1085,Azul
+2022,CN,1086,Amarela
+2022,CN,1087,Cinza
+2022,CN,1088,Rosa
+2022,CN,1092,Laranja - Adaptada Ledor
+2022,CN,1093,Verde - Videoprova - Libras
+2022,CN,1165,Azul (Reaplicação)
+2022,CN,1166,Amarela (Reaplicação)
+2022,CN,1167,Cinza (Reaplicação)
+2022,CN,1168,Rosa (Reaplicação)
+2022,CN,1187,Azul (Digital)
+2022,CN,1188,Amarela (Digital)
+2022,CN,1189,Rosa (Digital)
+2022,CN,1190,Cinza (Digital)
+2022,CH,1055,Azul
+2022,CH,1056,Amarela
+2022,CH,1057,Branca
+2022,CH,1058,Rosa
+2022,CH,1062,Laranja - Adaptada Ledor
+2022,CH,1063,Verde - Videoprova - Libras
+2022,CH,1135,Azul (Reaplicação)
+2022,CH,1136,Amarela (Reaplicação)
+2022,CH,1137,Branca (Reaplicação)
+2022,CH,1138,Rosa (Reaplicação)
+2022,CH,1175,Azul (Digital)
+2022,CH,1176,Amarela (Digital)
+2022,CH,1177,Branca (Digital)
+2022,CH,1178,Rosa (Digital)
+2022,LC,1065,Azul
+2022,LC,1066,Amarela
+2022,LC,1067,Rosa
+2022,LC,1068,Branca
+2022,LC,1072,Laranja - Adaptada Ledor
+2022,LC,1073,Verde - Videoprova - Libras
+2022,LC,1145,Azul (Reaplicação)
+2022,LC,1146,Amarela (Reaplicação)
+2022,LC,1147,Rosa (Reaplicação)
+2022,LC,1148,Branca (Reaplicação)
+2022,LC,1179,Azul (Digital)
+2022,LC,1180,Amarela (Digital)
+2022,LC,1181,Branca (Digital)
+2022,LC,1182,Rosa (Digital)
+2022,MT,1075,Azul
+2022,MT,1076,Amarela
+2022,MT,1077,Rosa
+2022,MT,1078,Cinza
+2022,MT,1082,Laranja - Adaptada Ledor
+2022,MT,1083,Verde - Videoprova - Libras
+2022,MT,1155,Azul (Reaplicação)
+2022,MT,1156,Amarela (Reaplicação)
+2022,MT,1157,Rosa (Reaplicação)
+2022,MT,1158,Cinza (Reaplicação)
+2022,MT,1183,Azul (Digital)
+2022,MT,1184,Amarela (Digital)
+2022,MT,1185,Rosa (Digital)
+2022,MT,1186,Cinza (Digital)
+2021,CN,909,Azul
+2021,CN,910,Amarela
+2021,CN,911,Cinza
+2021,CN,912,Rosa
+2021,CN,915,Laranja - Braille
+2021,CN,916,Laranja - Adaptada Ledor
+2021,CN,917,Verde - Videoprova - Libras
+2021,CN,989,Azul (Reaplicação)
+2021,CN,990,Amarela (Reaplicação)
+2021,CN,991,Cinza (Reaplicação)
+2021,CN,992,Rosa (Reaplicação)
+2021,CN,996,Laranja - Adaptada Ledor (Reaplicação)
+2021,CN,1011,Azul (Digital)
+2021,CN,1012,Amarela (Digital)
+2021,CN,1013,Rosa (Digital)
+2021,CN,1014,Cinza (Digital)
+2021,CN,1045,Azul (Segunda oportunidade)
+2021,CN,1046,Amarela (Segunda oportunidade)
+2021,CN,1047,Cinza (Segunda oportunidade)
+2021,CN,1048,Rosa (Segunda oportunidade)
+2021,CN,1052,Laranja - Adaptada Ledor (Segunda oportunidade)
+2021,CH,879,Azul
+2021,CH,880,Amarela
+2021,CH,881,Branca
+2021,CH,882,Rosa
+2021,CH,885,Laranja - Braille
+2021,CH,886,Laranja - Adaptada Ledor
+2021,CH,887,Verde - Videoprova - Libras
+2021,CH,959,Azul (Reaplicação)
+2021,CH,960,Amarela (Reaplicação)
+2021,CH,961,Branca (Reaplicação)
+2021,CH,962,Rosa (Reaplicação)
+2021,CH,966,Laranja - Adaptada Ledor (Reaplicação)
+2021,CH,999,Azul (Digital)
+2021,CH,1000,Amarela (Digital)
+2021,CH,1001,Branca (Digital)
+2021,CH,1002,Rosa (Digital)
+2021,CH,1015,Azul (Segunda oportunidade)
+2021,CH,1016,Amarela (Segunda oportunidade)
+2021,CH,1017,Branca (Segunda oportunidade)
+2021,CH,1018,Rosa (Segunda oportunidade)
+2021,CH,1022,Laranja - Adaptada Ledor (Segunda oportunidade)
+2021,LC,889,Azul
+2021,LC,890,Amarela
+2021,LC,891,Rosa
+2021,LC,892,Branca
+2021,LC,895,Laranja - Braille
+2021,LC,896,Laranja - Adaptada Ledor
+2021,LC,897,Verde - Videoprova - Libras
+2021,LC,969,Azul (Reaplicação)
+2021,LC,970,Amarela (Reaplicação)
+2021,LC,971,Rosa (Reaplicação)
+2021,LC,972,Branca (Reaplicação)
+2021,LC,976,Laranja - Adaptada Ledor (Reaplicação)
+2021,LC,1003,Azul (Digital)
+2021,LC,1004,Amarela (Digital)
+2021,LC,1005,Branca (Digital)
+2021,LC,1006,Rosa (Digital)
+2021,LC,1025,Azul (Segunda oportunidade)
+2021,LC,1026,Amarela (Segunda oportunidade)
+2021,LC,1027,Rosa (Segunda oportunidade)
+2021,LC,1028,Branca (Segunda oportunidade)
+2021,LC,1032,Laranja - Adaptada Ledor (Segunda oportunidade)
+2021,MT,899,Azul
+2021,MT,900,Amarela
+2021,MT,901,Rosa
+2021,MT,902,Cinza
+2021,MT,905,Laranja - Braille
+2021,MT,906,Laranja - Adaptada Ledor
+2021,MT,907,Verde - Videoprova - Libras
+2021,MT,979,Azul (Reaplicação)
+2021,MT,980,Amarela (Reaplicação)
+2021,MT,981,Rosa (Reaplicação)
+2021,MT,982,Cinza (Reaplicação)
+2021,MT,986,Laranja - Adaptada Ledor (Reaplicação)
+2021,MT,1007,Azul (Digital)
+2021,MT,1008,Amarela (Digital)
+2021,MT,1009,Rosa (Digital)
+2021,MT,1010,Cinza (Digital)
+2021,MT,1035,Azul (Segunda oportunidade)
+2021,MT,1036,Amarela (Segunda oportunidade)
+2021,MT,1037,Cinza (Segunda oportunidade)
+2021,MT,1038,Rosa (Segunda oportunidade)
+2021,MT,1042,Laranja - Adaptada Ledor (Segunda oportunidade)
+2020,CN,597,Azul
+2020,CN,598,Amarela
+2020,CN,599,Cinza
+2020,CN,600,Rosa
+2020,CN,601,Rosa - Ampliada
+2020,CN,602,Rosa - Superampliada
+2020,CN,604,Laranja - Adaptada Ledor
+2020,CN,605,Verde - Videoprova - Libras
+2020,CN,677,Azul (Reaplicação)
+2020,CN,678,Amarela (Reaplicação)
+2020,CN,679,Cinza (Reaplicação)
+2020,CN,680,Rosa (Reaplicação)
+2020,CN,684,Laranja - Adaptada Ledor (Reaplicação)
+2020,CN,699,Azul (Digital)
+2020,CN,700,Amarela (Digital)
+2020,CN,701,Rosa (Digital)
+2020,CN,702,Cinza (Digital)
+2020,CH,567,Azul
+2020,CH,568,Amarela
+2020,CH,569,Branca
+2020,CH,570,Rosa
+2020,CH,571,Rosa - Ampliada
+2020,CH,572,Rosa - Superampliada
+2020,CH,574,Laranja - Adaptada Ledor
+2020,CH,575,Verde - Videoprova - Libras
+2020,CH,647,Azul (Reaplicação)
+2020,CH,648,Amarela (Reaplicação)
+2020,CH,649,Branca (Reaplicação)
+2020,CH,650,Rosa (Reaplicação)
+2020,CH,654,Laranja - Adaptada Ledor (Reaplicação)
+2020,CH,687,Azul (Digital)
+2020,CH,688,Amarela (Digital)
+2020,CH,689,Branca (Digital)
+2020,CH,690,Rosa (Digital)
+2020,LC,577,Azul
+2020,LC,578,Amarela
+2020,LC,579,Rosa
+2020,LC,580,Branca
+2020,LC,581,Rosa - Ampliada
+2020,LC,582,Rosa - Superampliada
+2020,LC,584,Laranja - Adaptada Ledor
+2020,LC,585,Verde - Videoprova - Libras
+2020,LC,657,Azul (Reaplicação)
+2020,LC,658,Amarela (Reaplicação)
+2020,LC,659,Rosa (Reaplicação)
+2020,LC,660,Branca (Reaplicação)
+2020,LC,664,Laranja - Adaptada Ledor (Reaplicação)
+2020,LC,691,Azul (Digital)
+2020,LC,692,Amarela (Digital)
+2020,LC,693,Branca (Digital)
+2020,LC,694,Rosa (Digital)
+2020,MT,587,Azul
+2020,MT,588,Amarela
+2020,MT,589,Rosa
+2020,MT,590,Cinza
+2020,MT,591,Rosa - Ampliada
+2020,MT,592,Rosa - Superampliada
+2020,MT,594,Laranja - Adaptada Ledor
+2020,MT,595,Verde - Videoprova - Libras
+2020,MT,667,Azul (Reaplicação)
+2020,MT,668,Amarela (Reaplicação)
+2020,MT,669,Rosa (Reaplicação)
+2020,MT,670,Cinza (Reaplicação)
+2020,MT,674,Laranja - Adaptada Ledor (Reaplicação)
+2020,MT,695,Azul (Digital)
+2020,MT,696,Amarela (Digital)
+2020,MT,697,Rosa (Digital)
+2020,MT,698,Cinza (Digital)
+2019,CN,503,Azul
+2019,CN,504,Amarela
+2019,CN,505,Cinza
+2019,CN,506,Rosa
+2019,CN,519,Laranja - Adaptada Ledor
+2019,CN,523,Verde - Videoprova - Libras
+2019,CN,543,Amarela (Reaplicação)
+2019,CN,544,Cinza (Reaplicação)
+2019,CN,545,Azul (Reaplicação)
+2019,CN,546,Rosa (Reaplicação)
+2019,CH,507,Azul
+2019,CH,508,Amarela
+2019,CH,509,Branca
+2019,CH,510,Rosa
+2019,CH,520,Laranja - Adaptada Ledor
+2019,CH,524,Verde - Videoprova - Libras
+2019,CH,547,Azul (Reaplicação)
+2019,CH,548,Amarelo (Reaplicação)
+2019,CH,549,Branco (Reaplicação)
+2019,CH,550,Rosa (Reaplicação)
+2019,CH,564,Laranja - Adaptada Ledor (Reaplicação)
+2019,LC,511,Azul
+2019,LC,512,Amarela
+2019,LC,513,Rosa
+2019,LC,514,Branca
+2019,LC,521,Laranja - Adaptada Ledor
+2019,LC,525,Verde - Videoprova - Libras
+2019,LC,551,Azul (Reaplicação)
+2019,LC,552,Amarelo (Reaplicação)
+2019,LC,553,Branca (Reaplicação)
+2019,LC,554,Rosa (Reaplicação)
+2019,LC,565,Laranja - Adaptada Ledor (Reaplicação)
+2019,MT,515,Azul
+2019,MT,516,Amarela
+2019,MT,517,Rosa
+2019,MT,518,Cinza
+2019,MT,522,Laranja - Adaptada Ledor
+2019,MT,526,Verde - Videoprova - Libras
+2019,MT,555,Amarela (Reaplicação)
+2019,MT,556,Cinza (Reaplicação)
+2019,MT,557,Azul (Reaplicação)
+2019,MT,558,Rosa (Reaplicação)
+2018,CN,447,Azul
+2018,CN,448,Amarela
+2018,CN,449,Cinza
+2018,CN,450,Rosa
+2018,CN,463,Laranja - Adaptada Ledor
+2018,CN,467,Verde - Videoprova - Libras
+2018,CN,487,Amarela (Reaplicação)
+2018,CN,488,Cinza (Reaplicação)
+2018,CN,489,Azul (Reaplicação)
+2018,CN,490,Rosa (Reaplicação)
+2018,CH,451,Azul
+2018,CH,452,Amarela
+2018,CH,453,Branca
+2018,CH,454,Rosa
+2018,CH,464,Laranja - Adaptada Ledor
+2018,CH,468,Verde - Videoprova - Libras
+2018,CH,491,Azul (Reaplicação)
+2018,CH,492,Amarelo (Reaplicação)
+2018,CH,493,Branco (Reaplicação)
+2018,CH,494,Rosa (Reaplicação)
+2018,LC,455,Azul
+2018,LC,456,Amarela
+2018,LC,457,Rosa
+2018,LC,458,Branca
+2018,LC,465,Laranja - Adaptada Ledor
+2018,LC,469,Verde - Videoprova - Libras
+2018,LC,495,Azul (Reaplicação)
+2018,LC,496,Amarelo (Reaplicação)
+2018,LC,497,Branca (Reaplicação)
+2018,LC,498,Rosa (Reaplicação)
+2018,MT,459,Azul
+2018,MT,460,Amarela
+2018,MT,461,Rosa
+2018,MT,462,Cinza
+2018,MT,466,Laranja - Adaptada Ledor
+2018,MT,470,Verde - Videoprova - Libras
+2018,MT,499,Amarela (Reaplicação)
+2018,MT,500,Cinza (Reaplicação)
+2018,MT,501,Azul (Reaplicação)
+2018,MT,502,Rosa (Reaplicação)
+2017,CN,391,Azul
+2017,CN,392,Amarela
+2017,CN,393,Cinza
+2017,CN,394,Rosa
+2017,CN,407,Laranja - Adaptada Ledor
+2017,CN,411,Verde - Videoprova - Libras
+2017,CN,431,Amarela (Reaplicação)
+2017,CN,432,Cinza (Reaplicação)
+2017,CN,433,Azul (Reaplicação)
+2017,CN,434,Rosa (Reaplicação)
+2017,CH,395,Azul
+2017,CH,396,Amarela
+2017,CH,397,Branca
+2017,CH,398,Rosa
+2017,CH,408,Laranja - Adaptada Ledor
+2017,CH,412,Verde - Videoprova - Libras
+2017,CH,435,Azul (Reaplicação)
+2017,CH,436,Amarelo (Reaplicação)
+2017,CH,437,Branco (Reaplicação)
+2017,CH,438,Rosa (Reaplicação)
+2017,LC,399,Azul
+2017,LC,400,Amarela
+2017,LC,401,Rosa
+2017,LC,402,Branca
+2017,LC,409,Laranja - Adaptada Ledor
+2017,LC,413,Verde - Videoprova - Libras
+2017,LC,439,Azul (Reaplicação)
+2017,LC,440,Amarelo (Reaplicação)
+2017,LC,441,Branca (Reaplicação)
+2017,LC,442,Rosa (Reaplicação)
+2017,MT,403,Azul
+2017,MT,404,Amarela
+2017,MT,405,Rosa
+2017,MT,406,Cinza
+2017,MT,410,Laranja - Adaptada Ledor
+2017,MT,414,Verde - Videoprova - Libras
+2017,MT,443,Amarela (Reaplicação)
+2017,MT,444,Cinza (Reaplicação)
+2017,MT,445,Azul (Reaplicação)
+2017,MT,446,Rosa (Reaplicação)
+2016,CN,291,Azul
+2016,CN,292,Amarela
+2016,CN,293,Branca
+2016,CN,294,Rosa
+2016,CN,307,Branca - Adaptada
+2016,CN,331,Azul (Reaplicação)
+2016,CN,332,Amarela (Reaplicação)
+2016,CN,333,Branca (Reaplicação)
+2016,CN,334,Rosa (Reaplicação)
+2016,CN,351,Azul (Reaplicação)
+2016,CN,352,Amarela (Reaplicação)
+2016,CN,353,Branca (Reaplicação)
+2016,CN,354,Rosa (Reaplicação)
+2016,CN,355,Branca - Adaptada (Reaplicação)
+2016,CH,295,Azul
+2016,CH,296,Amarela
+2016,CH,297,Branca
+2016,CH,298,Rosa
+2016,CH,308,Branca - Adaptada
+2016,CH,336,Azul (Reaplicação)
+2016,CH,337,Amarela (Reaplicação)
+2016,CH,338,Branca (Reaplicação)
+2016,CH,339,Rosa (Reaplicação)
+2016,CH,356,Azul (Reaplicação)
+2016,CH,357,Amarela (Reaplicação)
+2016,CH,358,Branca (Reaplicação)
+2016,CH,359,Rosa (Reaplicação)
+2016,CH,360,Branca - Adaptada (Reaplicação)
+2016,LC,299,Azul
+2016,LC,300,Amarela
+2016,LC,301,Rosa
+2016,LC,302,Cinza
+2016,LC,309,Cinza - Adaptada
+2016,LC,341,Azul (Reaplicação)
+2016,LC,342,Amarela (Reaplicação)
+2016,LC,343,Rosa (Reaplicação)
+2016,LC,344,Cinza - Adaptada
+2016,LC,361,Azul (Reaplicação)
+2016,LC,362,Amarela (Reaplicação)
+2016,LC,363,Rosa (Reaplicação)
+2016,LC,364,Cinza (Reaplicação)
+2016,LC,365,Cinza - Adaptada (Reaplicação)
+2016,MT,303,Azul
+2016,MT,304,Amarela
+2016,MT,305,Rosa
+2016,MT,306,Cinza
+2016,MT,310,Cinza - Adaptada
+2016,MT,346,Azul (Reaplicação)
+2016,MT,347,Amarela (Reaplicação)
+2016,MT,348,Rosa (Reaplicação)
+2016,MT,349,Cinza (Reaplicação)
+2016,MT,366,Azul (Reaplicação)
+2016,MT,367,Amarela (Reaplicação)
+2016,MT,368,Rosa (Reaplicação)
+2016,MT,369,Cinza (Reaplicação)
+2016,MT,370,Cinza - Adaptada (Reaplicação)
+2015,CN,235,AZUL
+2015,CN,236,AMARELO
+2015,CN,237,BRANCO
+2015,CN,238,ROSA
+2015,CN,252,BRANCO - ADAPTADA (BRAILE E LEDOR)
+2015,CN,275,AZUL (REAPLICAÇÃO)
+2015,CN,276,AMARELO (REAPLICAÇÃO)
+2015,CN,277,BRANCO (REAPLICAÇÃO)
+2015,CN,278,ROSA (REAPLICAÇÃO)
+2015,CH,231,AZUL
+2015,CH,232,AMARELO
+2015,CH,233,BRANCO
+2015,CH,234,ROSA
+2015,CH,251,BRANCO - ADAPTADA (BRAILE E LEDOR)
+2015,CH,271,AZUL (REAPLICAÇÃO)
+2015,CH,272,AMARELO (REAPLICAÇÃO)
+2015,CH,273,BRANCO (REAPLICAÇÃO)
+2015,CH,274,ROSA (REAPLICAÇÃO)
+2015,LC,239,AMARELO
+2015,LC,240,CINZA
+2015,LC,241,AZUL
+2015,LC,242,ROSA
+2015,LC,253,CINZA - ADAPTADA (BRAILE E LEDOR)
+2015,LC,279,AMARELO (REAPLICAÇÃO)
+2015,LC,280,CINZA (REAPLICAÇÃO)
+2015,LC,281,AZUL (REAPLICAÇÃO)
+2015,LC,282,ROSA (REAPLICAÇÃO)
+2015,MT,243,AMARELO
+2015,MT,244,CINZA
+2015,MT,245,AZUL
+2015,MT,246,ROSA
+2015,MT,254,CINZA - ADAPTADA (BRAILE E LEDOR)
+2015,MT,283,AMARELO (REAPLICAÇÃO)
+2015,MT,284,CINZA (REAPLICAÇÃO)
+2015,MT,285,AZUL (REAPLICAÇÃO)
+2015,MT,286,ROSA (REAPLICAÇÃO)
+2014,CN,199,AZUL
+2014,CN,200,AMARELO
+2014,CN,201,BRANCO
+2014,CN,202,ROSA
+2014,CN,216,BRANCO - ADAPTADA (BRAILE E LEDOR)
+2014,CH,195,AZUL
+2014,CH,196,AMARELO
+2014,CH,197,BRANCO
+2014,CH,198,ROSA
+2014,CH,215,BRANCO - ADAPTADA (BRAILE E LEDOR)
+2014,LC,203,AMARELO
+2014,LC,204,CINZA
+2014,LC,205,AZUL
+2014,LC,206,ROSA
+2014,LC,213,CINZA(REAPLICAÇÃO)
+2014,LC,217,CINZA - ADAPTADA (BRAILE E LEDOR)
+2014,MT,207,AMARELO
+2014,MT,208,CINZA
+2014,MT,209,AZUL
+2014,MT,210,ROSA
+2014,MT,214,CINZA(REAPLICAÇÃO)
+2014,MT,218,CINZA - ADAPTADA (BRAILE E LEDOR)
+2013,CN,171,AZUL
+2013,CN,172,AMARELO
+2013,CN,173,BRANCO
+2013,CN,174,ROSA
+2013,CN,188,BRANCO - PROVA ESPECIAL (LEDOR)
+2013,CH,167,AZUL
+2013,CH,168,AMARELO
+2013,CH,169,BRANCO
+2013,CH,170,ROSA
+2013,CH,187,BRANCO - PROVA ESPECIAL (LEDOR)
+2013,LC,175,AMARELO
+2013,LC,176,CINZA
+2013,LC,177,AZUL
+2013,LC,178,ROSA
+2013,LC,189,CINZA - PROVA ESPECIAL (LEDOR)
+2013,MT,179,AMARELO
+2013,MT,180,CINZA
+2013,MT,181,AZUL
+2013,MT,182,ROSA
+2013,MT,190,CINZA - PROVA ESPECIAL (LEDOR)
+2012,MT,141,AZUL
+2012,MT,142,AMARELO
+2012,MT,143,BRANCO
+2012,MT,144,ROSA
+2012,MT,153,BRANCA (LEDOR)
+2012,CH,137,AZUL
+2012,CH,138,AMARELO
+2012,CH,139,BRANCO
+2012,CH,140,ROSA
+2012,CH,154,BRANCA (LEDOR)
+2012,LC,145,AMARELO
+2012,LC,146,CINZA
+2012,LC,147,AZUL
+2012,LC,148,ROSA
+2012,LC,155,CINZA (LEDOR)
+2012,MT,149,AMARELO
+2012,MT,150,CINZA
+2012,MT,151,AZUL
+2012,MT,152,ROSA
+2012,MT,156,CINZA (LEDOR)
+2011,CN,121,Azul
+2011,CN,122,Amarela
+2011,CN,123,Branca
+2011,CN,124,Rosa
+2011,CH,117,Azul
+2011,CH,118,Amarela
+2011,CH,119,Branca
+2011,CH,120,Rosa
+2011,LC,125,Amarela
+2011,LC,126,Cinza
+2011,LC,127,Azul
+2011,LC,128,Rosa
+2011,MT,129,Amarela
+2011,MT,130,Cinza
+2011,MT,131,Azul
+2011,MT,132,Rosa
+2010,CN,89,AZUL
+2010,CN,90,AMARELO
+2010,CN,91,BRANCA
+2010,CN,92,ROSA
+2010,CN,105,AZUL  - REAPLICAÇÃO
+2010,CN,106,AMARELO  - REAPLICAÇÃO
+2010,CN,107,BRANCA - REAPLICAÇÃO
+2010,CN,108,ROSA - REAPLICAÇÃO
+2010,CH,85,AZUL
+2010,CH,86,AMARELO
+2010,CH,87,BRANCA
+2010,CH,88,ROSA
+2010,CH,101,AZUL - REAPLICAÇÃO
+2010,CH,102,AMARELO - REAPLICAÇÃO
+2010,CH,103,BRANCA - REAPLICAÇÃO
+2010,CH,104,ROSA - REAPLICAÇÃO
+2010,LC,93,AMARELO
+2010,LC,94,CINZA
+2010,LC,95,AZUL
+2010,LC,96,ROSA
+2010,LC,109,AMARELO - REAPLICAÇÃO
+2010,LC,110,CINZA - REAPLICAÇÃO
+2010,LC,111,AZUL - REAPLICAÇÃO
+2010,LC,112,ROSA - REAPLICAÇÃO
+2010,MT,97,AMARELO
+2010,MT,98,CINZA
+2010,MT,99,AZUL
+2010,MT,100,ROSA
+2010,MT,113,AMARELO - REAPLICAÇÃO
+2010,MT,114,CINZA - REAPLICAÇÃO
+2010,MT,115,AZUL - REAPLICAÇÃO
+2010,MT,116,ROSA - REAPLICAÇÃO
+2009,CN,49,AZUL
+2009,CN,50,AMARELO
+2009,CN,51,BRANCA
+2009,CN,52,ROSA
+2009,CN,65,AZUL (REAPLICAÇÃO / PPL)
+2009,CN,66,AMARELO (REAPLICAÇÃO / PPL)
+2009,CN,67,BRANCA (REAPLICAÇÃO / PPL)
+2009,CN,68,ROSA (REAPLICAÇÃO / PPL)
+2009,CN,81,BRANCA - ADAPTADA LEDOR 9
+2009,CH,53,AZUL
+2009,CH,54,AMARELO
+2009,CH,55,BRANCA
+2009,CH,56,ROSA
+2009,CH,69,AZUL (REAPLICAÇÃO / PPL)
+2009,CH,70,AMARELO (REAPLICAÇÃO / PPL)
+2009,CH,71,BRANCA (REAPLICAÇÃO / PPL)
+2009,CH,72,ROSA (REAPLICAÇÃO / PPL)
+2009,CH,82,BRANCA - ADAPTADA LEDOR 9
+2009,LC,57,AMARELO
+2009,LC,58,CINZA
+2009,LC,59,AZUL
+2009,LC,60,ROSA
+2009,LC,73,AMARELO (REAPLICAÇÃO / PPL)
+2009,LC,74,CINZA (REAPLICAÇÃO / PPL)
+2009,LC,75,AZUL (REAPLICAÇÃO / PPL)
+2009,LC,76,ROSA (REAPLICAÇÃO / PPL)
+2009,LC,83,CINZA - ADAPTADA LEDOR 9
+2009,MT,61,AMARELO
+2009,MT,62,CINZA
+2009,MT,63,AZUL
+2009,MT,64,ROSA
+2009,MT,77,AMARELO (REAPLICAÇÃO / PPL)
+2009,MT,78,CINZA (REAPLICAÇÃO / PPL)
+2009,MT,79,AZUL (REAPLICAÇÃO / PPL)
+2009,MT,80,ROSA (REAPLICAÇÃO / PPL)
+2009,MT,84,CINZA - ADAPTADA LEDOR 9

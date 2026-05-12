@@ -11,12 +11,10 @@ def carregar_resultados(ano, area, chunksize=1000):
         "LC": ['CO_PROVA_LC', 'TX_RESPOSTAS_LC', 'NU_NOTA_LC', 'TP_LINGUA']
     }
 
-    caminho = f"MICRODADOS_ENEM_{ano}.csv"
+    caminho = f"PARTICIPANTES_{ano}.csv"
 
     return pd.read_csv(
         caminho,
-        sep=';',
-        encoding="latin1",
         usecols=colunas[area],
         chunksize=chunksize
     )
@@ -46,7 +44,7 @@ def extrair_amostra(area, cod_prova, ano, lingua, n=800):
             lista_chunks.append(filtrado)
             total += len(filtrado)
         
-        if total >= 800:
+        if total >= n:
             break
 
     if total == 0:

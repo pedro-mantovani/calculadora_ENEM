@@ -1,4 +1,12 @@
-# Programa qe centraliza os códigos e organiza uma pipeline capaz de processar notas em massa
+# Programa que centraliza os códigos e organiza uma pipeline capaz de processar notas em massa
+
+# Valores estimados da transformação linear aplicada por área
+transformacao = {
+    "LC": (499.977, 108.09),
+    "CH": (501.487, 112.315),
+    "CN": (501.142, 113.11),
+    "MT": (500.016, 129.654),
+}
 
 import pandas as pd
 import numpy as np
@@ -6,10 +14,14 @@ from extracao import extrair_amostra
 from proficiencia import processar_thetas
 import regressao as rg
 
-ano = 2022
-lingua = 0 # 0 inglês e 1 espanhol
-
-def nota_completa(area, prova, lingua, ano, plot=0):
+def nota_completa(area, prova, lingua, ano, plot=0, regressao = 0):
+    """
+    Função principal, recebe como parâmetro a área da prova, o código da prova
+    A língua estrangeira da prova
+    Um booleano indicando se é necessário plotar as figuras referentes às métricas
+    Um booleno indicando se é necessário aplicar a regressão linear para estimar os parâmetros da transformação linear
+    O padrão é usar os valores fixos.
+    """
     # Coleta uma amostra de participantes
     participantes = extrair_amostra(area, prova, ano, lingua)
 
@@ -41,7 +53,11 @@ def nota_completa(area, prova, lingua, ano, plot=0):
     thetas = processar_thetas(participantes, itens, area)
 
     # Calcula o A e B da transformação linear via regressão
-    A, B = rg.ajustar_regressao(thetas['theta_estimado'].values, thetas['nota_oficial'].values)
+    if regressao:
+        A, B = rg.ajustar_regressao(thetas['theta_estimado'].values, thetas['nota_oficial'].values)
+    else:
+        A, B = transformacao[area]
+
 
     # Calcula a nota estimada
     nota_estimada = A + thetas['theta_estimado'].values*B
@@ -62,14 +78,14 @@ def nota_completa(area, prova, lingua, ano, plot=0):
 
     # Salva os gráficos de qualidade dos resultados
     if(plot):
-        rg.plotar_resultados(thetas['nota_oficial'].values, nota_estimada)
+        rg.plotar_resultados(thetas['nota_oficial'].values, nota_estimada, prova)
     
     return A, B, metricas
 
 # Função com loop principal para processar várias provas ao mesmo tempo
 
 provas = pd.read_csv(
-    f"provas_{ano}.csv",
+    "provas.csv",
     sep=',',
     encoding="latin1",
 )
@@ -78,13 +94,15 @@ lista_A = []
 lista_B = []
 lista_metricas = []
 
+lingua = 0 # Língua estrangeira
+
 for _, prova in provas.iterrows():
 
     area = prova['area']
     cod = prova['codigo']
-    lingua = int(not lingua) # Alterna entre inglês e espanhol
+    ano = prova['ano']
 
-    A, B, metricas = nota_completa(area, cod, lingua, ano)
+    A, B, metricas = nota_completa(area, cod, lingua, ano, 1)
 
     lista_A.append(A)
     lista_B.append(B)
@@ -99,4 +117,4 @@ metricas_df = pd.DataFrame(lista_metricas)
 
 provas = pd.concat([provas, metricas_df], axis=1)
 
-provas.to_csv(f"provas_{ano}.csv")
+provas.to_csv(f"estimativas.csv")
