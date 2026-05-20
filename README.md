@@ -10,8 +10,8 @@
 * [Exemplo de uso](#exemplo-de-uso)
 * [Como funciona o cálculo](#como-funciona-o-cálculo)
 
-  * [TRI e modelo 3PL](#1-tri--modelo-3pl)
-  * [Estimativa da proficiência (θ)](#2-estimativa-da-proficiência-θ)
+  * [Modelagem das questões](#1-modelagem-das-questões)
+  * [Cálculo da proficiência (θ)](#2-cálculo-da-proficiência-θ)
   * [Conversão para a escala do ENEM](#3-conversão-para-a-escala-do-enem)
 * [Casos atípicos e inconsistências nos microdados](#casos-atípicos-e-inconsistências-nos-microdados)
 
@@ -151,53 +151,122 @@ Nota: 654.68
 ```
 
 ---
+## Como funciona o cálculo
 
-# Como funciona o cálculo
+O cálculo da nota do ENEM é baseado na **Teoria de Resposta ao Item (TRI)**, que considera não apenas o número de acertos, mas também a coerência das respostas.
 
-# 1. TRI — modelo 3PL
-
-Cada questão é representada por três parâmetros:
-
-* **a** → discriminação;
-* **b** → dificuldade;
-* **c** → acerto ao acaso.
-
-A probabilidade de acerto é dada por:
-
-$$
-P(\theta) =
-c + \frac{1-c}{1 + e^{-a(\theta-b)}}
-$$
-
-## Interpretação intuitiva
-
-* θ maior → maior chance de acerto;
-* b alto → questão mais difícil;
-* a alto → questão diferencia melhor os participantes;
-* c alto → maior chance de acerto por chute.
+A seguir está uma explicação da metodologia utilizada.
 
 ---
 
-# 2. Estimativa da proficiência (θ)
+### 1. Modelagem das questões
 
-A proficiência é estimada utilizando o método EAP (*Expected a Posteriori*).
+Cada questão é modelada por três parâmetros:
 
-A implementação:
+* **a (discriminação):** capacidade de diferenciar alunos com diferentes níveis de habilidade
+* **b (dificuldade):** nível de proficiência necessário para acertar a questão
+* **c (acerto ao acaso):** probabilidade de acerto por chute
 
-* assume priori normal padrão;
-* calcula a distribuição posterior;
-* aproxima numericamente as integrais;
-* utiliza domínio logarítmico para estabilidade numérica.
+Esses parâmetros definem a **Curva Característica do Item (CCI)**:
 
-## Aproximação numérica
+$$
+P(\theta) = c + \frac{1 - c}{1 + e^{-a(\theta - b)}}
+$$
 
-O projeto utiliza:
+![CCI_2024_139](imagens/CCI_padrao.png)
 
-* intervalo: [-4, 4];
-* 400 pontos igualmente espaçados;
-* método dos trapézios.
+**Interpretação:**
 
-O INEP utiliza quadratura gaussiana, que é mais precisa, porém menos didática e mais complexa de reproduzir.
+* Quanto maior o θ, maior a probabilidade de acerto
+* Questões mais difíceis (b alto) deslocam a curva para a direita
+![CCI_B_alto](imagens/CCI_B.png)
+* Alta discriminação (a alto) torna a curva mais inclinada
+![CCI_A_alto](imagens/CCI_A.png)
+* Maior acerto ao acaso (c alto) eleva a base da curva
+![CCI_C_alto](imagens/CCI_C.png)
+
+---
+
+### 2. Cálculo da proficiência (θ)
+
+O objetivo é estimar a proficiência do aluno (θ), que representa sua habilidade.
+
+---
+
+#### 2.1 Função de verossimilhança (MLE)
+
+Dado um conjunto de respostas, calcula-se a probabilidade de um aluno com determinada proficiência produzir aquele padrão.
+
+Isso é feito multiplicando:
+
+* Probabilidades de acerto nas questões corretas
+* Probabilidades de erro nas questões incorretas
+
+O valor de θ que maximiza essa função é chamado de **MLE (Maximum Likelihood Estimation)**.
+
+**Limitação:**
+Se o aluno acerta todas as questões, a estimativa tende ao infinito.
+
+---
+
+#### 2.2 Método EAP (Expected a Posteriori)
+
+Para evitar esse problema, utiliza-se o método EAP.
+
+Nesse método:
+
+* Assume-se que θ segue uma distribuição normal padrão (média 0, desvio 1)
+* Essa distribuição atua como uma **priori**, penalizando valores extremos
+
+A função utilizada é:
+
+$$
+\pi(\theta) = \frac{e^{-\theta^2/2}}{\sqrt{2\pi}}
+$$
+
+A estimativa final é baseada na **distribuição a posteriori**, que combina:
+
+* Evidência dos dados (respostas)
+* Conhecimento prévio (distribuição normal)
+
+Simplificando, é como se essa função amarrasse uma corda e não deixasse a proficiência do aluno ser muito alta, visto que isso é pouco provável. Assim, quanto mais longe do esperado mais esses valores são penalizados e quanto mais perto do esperado mais próximos são os resultados de ambos os métodos.
+
+O último passo é encontrar o centro de massa desta nova função. Usar o centro de massa ao invés do valor máximo permite levar em consideração para onde o gráfico tende além de simplesmente ver o ponto máximo da função. Repare na diferença prática dos dois métodos:
+
+![EAPxMLE](imagens/EAPxMLE.png)
+
+---
+
+#### 2.3 Aproximação numérica
+
+O centro de massa é calculado por:
+
+$$
+CM = \frac{\int x f(x),dx}{\int f(x),dx}
+$$
+
+Como não há solução analítica simples, utiliza-se aproximação numérica:
+
+* Intervalo considerado: [-4, 4]
+* Divisão em 400 pontos
+* Cálculo da função em cada ponto
+* Aproximação da integral via método dos trapézios
+* Cada par de pontos forma um trapézio de base $f(x_{i})$ e $f(x_{i+1})$
+* Somando as áreas de todos os trapézios temos aproximadamente a área do gráfico
+
+Essa abordagem oferece um bom equilíbrio entre precisão e desempenho.
+
+**Observação:**
+O INEP utiliza quadratura gaussiana, que é mais precisa, porém menos didática.
+
+---
+
+#### 2.4 Otimização com logaritmos
+
+Para evitar problemas numéricos (como underflow), os cálculos são feitos em escala logarítmica:
+
+* Produtos → somas
+* Maior estabilidade computacional
 
 ---
 
@@ -209,7 +278,9 @@ $$
 \text{Nota} = \mu + \sigma \theta
 $$
 
-Os parâmetros foram estimados empiricamente via regressão linear utilizando milhares de participantes reais.
+Esses parâmetros não são divulgados oficialmente pelo INEP apenas o valor aproximado de 500 para $\mu$ e 100 para $\sigma$.
+
+Porém, ao aplicar uma regressão linear entre os valores estimados da proficiência e a nota final oficial, é possível encontrar os valores aproximados apresentados na tabela:
 
 ## Valores médios estimados
 
@@ -219,6 +290,10 @@ Os parâmetros foram estimados empiricamente via regressão linear utilizando mi
 | Ciências Humanas     | 501.487 | 112.315 |
 | Ciências da Natureza | 501.141 | 113.108 |
 | Matemática           | 500.015 | 129.654 |
+
+Comparando as provas de 2009 a 2024 a variação média por área desses parâmetros foi próxima de 0,003 o que indica que os parâmetros são fixos por área entre os anos.
+
+Todas as estimativas estão disponíveis no arquivo [estimativas.csv](dados/estimativas.csv)
 
 ---
 
