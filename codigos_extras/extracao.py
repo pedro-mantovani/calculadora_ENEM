@@ -1,6 +1,7 @@
 # Programa para estrair dos resultados uma amostra de participantes
 
 import pandas as pd
+from pathlib  import Path
 
 def carregar_resultados(ano, area, chunksize=1000):
     
@@ -11,12 +12,26 @@ def carregar_resultados(ano, area, chunksize=1000):
         "LC": ['CO_PROVA_LC', 'TX_RESPOSTAS_LC', 'NU_NOTA_LC', 'TP_LINGUA']
     }
 
-    caminho = f"PARTICIPANTES_{ano}.csv"
+    """
+    Altere para o caminho dos seus dados
+    Por padrão será na pasta dados/RESULTADOS,
+    considerando que a pasta dados está uma pasta acima da atual
+    """
+    atual = Path(__file__).resolve()
+    pasta = atual.parent.parent / 'dados' / 'RESULTADOS' 
+    if (ano == 2016): 
+        caminho = pasta / 'microdados_enem_2016.csv'
+    elif (ano < 2024):
+        caminho = pasta / f'MICRODADOS_ENEM_{ano}.csv'
+    else:
+        caminho = pasta / f"RESULTADOS_{ano}.csv"
 
     return pd.read_csv(
         caminho,
+        sep = ';',
+        encoding='latin1',
         usecols=colunas[area],
-        chunksize=chunksize
+        chunksize=chunksize,
     )
 
 

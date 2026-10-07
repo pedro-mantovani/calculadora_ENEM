@@ -1,5 +1,7 @@
 # Calculadora ENEM
 
+Caso queira apenas calcular sua nota no ENEM use o site [pedro-mantovani.github.io/site_calculadora_ENEM/](https://pedro-mantovani.github.io/site_calculadora_ENEM/).
+
 ## Sumário
 
 * [Sobre o projeto](#sobre-o-projeto)
@@ -112,7 +114,7 @@ pip install pandas numpy matplotlib
 python3 calculadora.py
 ```
 
-Note que para o uso exclusivo de cálculo de nota basta o código calculadora.py e a planilha com os itens das provas na mesma pasta.
+Note que para o programa espera o caminho `dados/ITENS_PROVAS/ITENS_PROVA_{ano}.csv` para os dados do item das provas, altere se necessário.
 
 O programa solicitará:
 
@@ -315,9 +317,31 @@ Um desses casos ocorreu nas provas de Linguagens entre 2015 e 2021. Diferentemen
 
 Nesse cenário, o código funcionava corretamente, porém a correspondência entre as respostas corretas e as respostas do participante ficava comprometida, tornando os acertos praticamente aleatórios e acarretando a subestimação das notas.
 
-Após a remoção dos “99999” das respostas dos participantes, o erro retornou ao patamar esperado, em torno de 0,03 ponto. Dessa forma, outras provas com tendências semelhantes foram desconsideradas da análise final, por possivelmente conterem inconsistências nos itens ou participantes que não representam adequadamente o método.
+Após a remoção dos “99999” das respostas dos participantes, o erro retornou ao patamar esperado, em torno de 0,03 ponto. Dessa forma, outras provas com tendências semelhantes foram desconsideradas da análise final, por possivelmente conterem inconsistências nos itens ou participantes que não representam adequadamente o método, nesses casos o ideial é uma revisão sistemática das provas a fim de entender se o problema está na forma de representação dos participantes ou dos itens, no segundo caso uma estimativa no [site](https://pedro-mantovani.github.io/site_calculadora_ENEM/) também apresentará inconsistências.
 
-Das 571 provas analisadas, 56 foram desconsideradas. Seus resultados estão apresentados em [dados/provas_desconsideradas.csv](dados/provas_desconsideradas.csv).
+Das 571 provas analisadas, 56 foram desconsideradas e estão apresentadas na tabela a seguir. Seus resultados estão em [dados/provas_desconsideradas.csv](dados/provas_desconsideradas.csv):
+
+| Ano | Área | Tipo | Código(s) |
+| --- | --- | --- | --- |
+| 2021 | LC | Adaptada | 896 |
+| 2021 | LC | Videoprova | 897 |
+| 2020 | LC | Digital | 691 a 694 |
+| 2019 | MT | Todos | 515 a 518, 522 e 526 |
+| 2018 | CN | Todos | 447 a 450, 463 e 467 |
+| 2017 | CN | Regular | 391 a 394 |
+| 2017 | CN | Adaptada | 407 |
+| 2017 | CH | Primeira Aplicação | 395 a 398, 408 e 412 |
+| 2017 | LC | Videoprova | 417 |
+| 2017 | MT | Regular | 403 a 406 |
+| 2017 | MT | Adaptada | 410 |
+| 2016 | CN | Reaplicação | 331 a 333, 351 a 354 |
+| 2015 | CN | Adaptada | 252 |
+| 2014 | LC | Reaplicação | 213 |
+| 2013 | Todas | Ledor | 188, 187, 189 e 190 |
+| 2013 | MT | Regular | 179 a 182 |
+| 2011 | CN | Todos | 121 a 124 |
+
+*Legenda/Legenda da tabela:* **Tabela 1: Provas desconsideradas por inconsistências sistemáticas**
 
 ---
 
@@ -375,6 +399,12 @@ Executa avaliações em massa e calcula métricas de desempenho.
 
 ---
 
+## `paralelo.py`
+
+Executa avaliações em massa e calcula métricas de desempenho processando as provas em paralelo.
+
+---
+
 ## `extracao.py`
 
 Extrai participantes dos microdados.
@@ -390,6 +420,12 @@ Estima proficiências individuais ou em lote.
 ## `regressao.py`
 
 Estima os parâmetros lineares da escala do ENEM e métricas de avaliação.
+
+---
+
+## `filtrar_provas.py`
+
+Filtra as provas de um determinado ano que possuem itens
 
 ---
 

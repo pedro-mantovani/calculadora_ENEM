@@ -56,15 +56,20 @@ def estimar_theta(resp, itens):
     return theta_eap
 
 
-def processar_thetas(participantes, itens, area):
+def processar_thetas(participantes, itens, area, ano):
 
     theta_lista = []
     nota_lista = []
 
     resps = f"TX_RESPOSTAS_{area}"
+
     notas = f"NU_NOTA_{area}"
 
     for _, part in participantes.iterrows():
+
+        # Entre 2021 e 2024 as respostas da língua estrangeira incuíam a substring '99999' representando a língua que não foi feita
+        if (area == 'LC' and ano <= 2021 and ano >= 2015):
+            part[resps] = part[resps].replace('99999', '')
 
         theta = estimar_theta(
             part[resps],

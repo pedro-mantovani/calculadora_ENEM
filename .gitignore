@@ -1,4 +1,9 @@
 codigos_teste/
 IC/
 vscode/
-dados/RESULTADOS_VALIDOS/
+codigos_extras/__pycache__
+codigos_extras/estimar_parametros.py
+dados/RESULTADOS
+dados/estimativas_finais.csv
+codigos_extras/*.png
+codigos_extras/*.csv

@@ -77,7 +77,7 @@ if __name__ == "__main__":
     print("Para começar digite:")
     ano = input("Ano da prova ")
 
-    caminho = f"ITENS_PROVA_{ano}.csv"
+    caminho = f"dados/ITENS_PROVAS/ITENS_PROVA_{ano}.csv" # Altere se necessário
 
     # Carregando os dados dos itens
     try:

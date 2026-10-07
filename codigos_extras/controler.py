@@ -1,4 +1,9 @@
 # Programa que centraliza os códigos e organiza uma pipeline capaz de processar notas em massa
+# Processa todas as provas do arquivo "provas.csv"
+# O formato padrão é com as seguintes colunas ano, area, codigo, tipo
+# Uma forma de obte-la é usando o código filtrar_provas.py ou o arquivo codigos_provas.csv ou provas_com_participantes.csv
+# Ambas estão na pasta dados e o segundo caso exclui as provas que não tiveram participantes divulgados
+# Normalmente isso acontece por poucas pessoas terem feito a prova e permitir uma exposição indevida dos participantes
 
 # Valores estimados da transformação linear aplicada por área
 transformacao = {
@@ -13,6 +18,7 @@ import numpy as np
 from extracao import extrair_amostra
 from proficiencia import processar_thetas
 import regressao as rg
+from pathlib import Path
 
 def nota_completa(area, prova, lingua, ano, plot=0, regressao = 0):
     """
@@ -35,8 +41,14 @@ def nota_completa(area, prova, lingua, ano, plot=0, regressao = 0):
             "r2": np.nan
         }
 
-    # Coleta informação dos itens
-    caminho = f"ITENS_PROVA_{ano}.csv"
+    """
+    Altere para o caminho dos seus dados
+    Por padrão será na pasta dados/ITENS_PROVAS,
+    considerando que a pasta dados está uma pasta acima da atual
+    """
+    atual = Path(__file__).resolve()
+    caminho = atual.parent.parent / 'dados' / 'ITENS_PROVAS' / f"ITENS_PROVA_{ano}.csv"
+
     itens = pd.read_csv(
         caminho,
         sep=';',
@@ -61,7 +73,7 @@ def nota_completa(area, prova, lingua, ano, plot=0, regressao = 0):
 
     # Calcula a nota estimada
     nota_estimada = A + thetas['theta_estimado'].values*B
-    nota_estimada = np.round(nota_estimada, 2)
+    nota_estimada = np.round(nota_estimada, 1)
     print(f"A estimado {A}")
     print(f"B estimado {B}")
 
@@ -102,7 +114,7 @@ for _, prova in provas.iterrows():
     cod = prova['codigo']
     ano = prova['ano']
 
-    A, B, metricas = nota_completa(area, cod, lingua, ano, 1)
+    A, B, metricas = nota_completa(area, cod, lingua, ano, plot = 0)
 
     lista_A.append(A)
     lista_B.append(B)
