@@ -20,12 +20,13 @@ from proficiencia import processar_thetas
 import regressao as rg
 from pathlib import Path
 
-def nota_completa(area, prova, lingua, ano, plot=0, regressao = 0):
+def nota_completa(area, prova, lingua, ano, plot=0, regressao = 0, csv=0):
     """
     Função principal, recebe como parâmetro a área da prova, o código da prova
     A língua estrangeira da prova
     Um booleano indicando se é necessário plotar as figuras referentes às métricas
     Um booleno indicando se é necessário aplicar a regressão linear para estimar os parâmetros da transformação linear
+    Um booleano indicando se os dados individuais dos participantes devem ser salvos em CSV
     O padrão é usar os valores fixos.
     """
     # Coleta uma amostra de participantes
@@ -62,7 +63,7 @@ def nota_completa(area, prova, lingua, ano, plot=0, regressao = 0):
     itens = itens.sort_values(by='CO_POSICAO').reset_index(drop=True)
 
     # Calcula os theta
-    thetas = processar_thetas(participantes, itens, area)
+    thetas = processar_thetas(participantes, itens, area, ano)
 
     # Calcula o A e B da transformação linear via regressão
     if regressao:
@@ -91,6 +92,18 @@ def nota_completa(area, prova, lingua, ano, plot=0, regressao = 0):
     # Salva os gráficos de qualidade dos resultados
     if(plot):
         rg.plotar_resultados(thetas['nota_oficial'].values, nota_estimada, prova)
+
+    # Salva um arquivo por prova com as respostas e as notas individuais.
+    if(csv):
+        dados_participantes = pd.DataFrame({
+            "respostas": participantes[f"TX_RESPOSTAS_{area}"].astype(str).values,
+            "nota_estimada": nota_estimada,
+            "nota_real": thetas["nota_oficial"].values,
+            "theta": thetas["theta_estimado"].values,
+        })
+        arquivo_csv = f"participantes_{area}_{prova}_{ano}.csv"
+        dados_participantes.to_csv(arquivo_csv, index=False, encoding="utf-8-sig")
+        print(f"Dados individuais salvos em {arquivo_csv}")
     
     return A, B, metricas
 
@@ -106,7 +119,7 @@ lista_A = []
 lista_B = []
 lista_metricas = []
 
-lingua = 0 # Língua estrangeira
+lingua = 1 # Língua estrangeira
 
 for _, prova in provas.iterrows():
 
@@ -114,7 +127,7 @@ for _, prova in provas.iterrows():
     cod = prova['codigo']
     ano = prova['ano']
 
-    A, B, metricas = nota_completa(area, cod, lingua, ano, plot = 0)
+    A, B, metricas = nota_completa(area, cod, lingua, ano, plot = 0, csv = 0)
 
     lista_A.append(A)
     lista_B.append(B)

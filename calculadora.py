@@ -128,4 +128,4 @@ if __name__ == "__main__":
     nota = A + B*theta
 
     print("Theta:", theta)
-    print(f'Nota: {nota:.2f}')
+    print(f'Nota: {nota:.1f}')

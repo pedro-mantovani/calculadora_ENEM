@@ -47,10 +47,10 @@ A implementação foi construída a partir dos procedimentos metodológicos divu
 
 # Resultados
 
-Nos experimentos realizados entre 2009 e 2024:
+Nos experimentos realizados entre 2009 e 2025:
 
-* erro médio absoluto (MAE): ~0,03 pontos;
-* mediana do erro: ~0,025 pontos;
+* erro médio absoluto (MAE): ~0,02 pontos;
+* mediana do erro: ~0,004 pontos;
 * viés próximo de zero;
 * alta estabilidade entre anos e áreas.
 
@@ -149,7 +149,7 @@ Código da prova: 1420
 ```text
 Acertos: 35
 Theta: 1.1929388941456571
-Nota: 654.68
+Nota: 654.7
 ```
 
 ---
@@ -319,7 +319,9 @@ Nesse cenário, o código funcionava corretamente, porém a correspondência ent
 
 Após a remoção dos “99999” das respostas dos participantes, o erro retornou ao patamar esperado, em torno de 0,03 ponto. Dessa forma, outras provas com tendências semelhantes foram desconsideradas da análise final, por possivelmente conterem inconsistências nos itens ou participantes que não representam adequadamente o método, nesses casos o ideial é uma revisão sistemática das provas a fim de entender se o problema está na forma de representação dos participantes ou dos itens, no segundo caso uma estimativa no [site](https://pedro-mantovani.github.io/site_calculadora_ENEM/) também apresentará inconsistências.
 
-Das 571 provas analisadas, 56 foram desconsideradas e estão apresentadas na tabela a seguir. Seus resultados estão em [dados/provas_desconsideradas.csv](dados/provas_desconsideradas.csv):
+Outro caso identificado foi o gabarito incorreto do item 158737 (item presente nas provas de reaplicação de 2025, item 18 da prova branca), ao alterar o gabarito de B para D (assim como nos gabaritos oficiais do exame) o erro médio caiu da casa das dezenas de pontos para os centésimos.
+
+Visto que cada caso é particular e o esforço para verificar cada prova suspeita individualmente seria muito maior que os ganhos, escolhi desconsiderar essas provas da análise final. Das 603 provas analisadas, 56 foram desconsideradas e estão apresentadas na tabela a seguir. Seus resultados estão em [dados/provas_desconsideradas.csv](dados/provas_desconsideradas.csv):
 
 | Ano | Área | Tipo | Código(s) |
 | --- | --- | --- | --- |
